@@ -1,0 +1,1 @@
+export { PaletteCreatePage } from './routes';

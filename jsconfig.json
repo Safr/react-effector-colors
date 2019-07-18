@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@features/*": ["./features/*"],
+      "@react-colors/ui": ["./ui/index"],
+      "@react-colors/ui/*": ["./ui/*"],
+      "@lib/*": ["./lib/*"]
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}
