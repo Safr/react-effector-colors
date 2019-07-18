@@ -25,6 +25,7 @@ const PaletteView = props => {
   const changeFormat = val => {
     setFormat(val);
   };
+  console.log('palette', palette);
 
   const colorBoxes = palette
     ? palette.colors[level].map(color => {
