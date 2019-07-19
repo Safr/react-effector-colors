@@ -5,7 +5,8 @@
       "@features/*": ["./features/*"],
       "@react-colors/ui": ["./ui/index"],
       "@react-colors/ui/*": ["./ui/*"],
-      "@lib/*": ["./lib/*"]
+      "@lib/*": ["./lib/*"],
+      "@ui": ["./ui"]
     }
   },
   "exclude": ["node_modules", "build"]

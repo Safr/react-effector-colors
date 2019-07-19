@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './app';
+import { ProgressBar } from '@ui';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Suspense fallback={<div>Загрузка...</div>}>
+  <Suspense fallback={<ProgressBar />}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
