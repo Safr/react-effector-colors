@@ -5,6 +5,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    padding: '15px 0',
     backgroundColor: '#fff',
   },
   logo: {
