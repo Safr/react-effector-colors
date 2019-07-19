@@ -9,7 +9,7 @@ Builds the app for production to the `build` folder.
 
 ## Demo
 
-[Live DEMO](https://react-effector-colors.firebaseapp.com/)
+[Live DEMO](https://react-effector-colors.netlify.com/)
 
 ## The project was build using the following technologies:
 
