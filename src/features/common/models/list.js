@@ -11,12 +11,10 @@ export const getPalettesList = createEvent('get palettes list');
 export const $palettesList = createStore([]);
 
 // Side Effects
-// $palettesList.on(
-//   getPalettesList,
-//   () =>
-//     JSON.parse(window.localStorage.getItem('palettes')) || seedColors,
-// );
-$palettesList.on(getPalettesList, () => seedColors);
+$palettesList.on(
+  getPalettesList,
+  () => JSON.parse(window.localStorage.getItem('palettes')) || seedColors,
+);
 $palettesList.on(removePalette, (state, params) =>
   state.filter(palette => palette.id !== params.id),
 );
@@ -25,7 +23,7 @@ $palettesList.on(savePalette, (state, params) => {
 });
 
 $palettesList.watch(removePalette, store => {
-  syncLocalStorage({ key: 'palettes', store });
+  syncLocalStorage({ key: 'palettes', data: store });
 });
 $palettesList.watch(savePalette, store => {
   syncLocalStorage({ key: 'palettes', data: store });

@@ -61,7 +61,7 @@ const PalettesList = props => {
             <Link to="/palette/new">Create Palette</Link>
           </nav>
           <TransitionGroup className={classes.palettes}>
-            {palettesList &&
+            {palettesList.length > 0 &&
               palettesList.map(palette => (
                 <CSSTransition key={palette.id} classNames="fade" timeout={500}>
                   <MiniPalette
