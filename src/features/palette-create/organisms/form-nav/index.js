@@ -16,15 +16,8 @@ import { PaletteMetaForm } from '../palette-meta-form';
 import styles from './styles';
 
 const FormNav = props => {
-  const [newPaletteName, setNewPaletteName] = useState('');
   const [isFormShown, setFormShown] = useState(false);
   const palettesList = useStore($palettesList);
-
-  const handleChange = evt => {
-    // this.setState({
-    //   [evt.target.name]: evt.target.value,
-    // });
-  };
 
   const showForm = () => {
     setFormShown(true);
@@ -92,8 +85,7 @@ const FormNav = props => {
 };
 
 FormNav.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   open: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleDrawerOpen: PropTypes.func.isRequired,

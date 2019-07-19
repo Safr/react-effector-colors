@@ -1,4 +1,5 @@
 import React, { lazy } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 const PalettesList = lazy(() =>
@@ -17,5 +18,11 @@ export const PalettesListPage = props => (
     <Redirect to="/404" />
   </Switch>
 );
+
+PalettesListPage.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+};
 
 export default React.memo(PalettesListPage);

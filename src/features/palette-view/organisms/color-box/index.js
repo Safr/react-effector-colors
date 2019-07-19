@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
@@ -8,13 +8,12 @@ import styles from './styles';
 
 const ColorBox = props => {
   const [copied, setCopied] = useState(false);
+  const { name, background, moreUrl, showingFullPalette, classes } = props;
 
   const changeCopyState = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
-
-  const { name, background, moreUrl, showingFullPalette, classes } = props;
 
   return (
     <CopyToClipboard text={background} onCopy={changeCopyState}>
@@ -50,6 +49,14 @@ const ColorBox = props => {
       </div>
     </CopyToClipboard>
   );
+};
+
+ColorBox.propTypes = {
+  name: PropTypes.string.isRequired,
+  background: PropTypes.string.isRequired,
+  moreUrl: PropTypes.string.isRequired,
+  showingFullPalette: PropTypes.bool.isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export const StyledColorBox = withStyles(styles)(ColorBox);

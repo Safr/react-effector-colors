@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import Select from '@material-ui/core/Select';
@@ -76,6 +76,14 @@ const Navbar = props => {
       />
     </header>
   );
+};
+
+Navbar.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  level: PropTypes.string.isRequired,
+  changeLevel: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  showingAllColors: PropTypes.bool.isRequired,
 };
 
 export const StyledNavbar = withStyles(styles)(Navbar);

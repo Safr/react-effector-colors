@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import { useStore } from 'effector-react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -25,7 +26,7 @@ import styles from '../styles';
 const PalettesList = props => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deletingId, setDeletingId] = useState('');
-  const { classes } = props;
+  const { classes, history } = props;
   const palettesList = useStore($palettesList);
 
   useEffect(() => {
@@ -43,8 +44,7 @@ const PalettesList = props => {
   };
 
   const goToPalette = id => {
-    // eslint-disable-next-line react/prop-types
-    props.history.push(`/palette/${id}`);
+    history.push(`/palette/${id}`);
   };
 
   const handleDelete = () => {
@@ -110,3 +110,8 @@ const PalettesList = props => {
 };
 
 export const StyledPalettesList = withStyles(styles)(PalettesList);
+
+PalettesList.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+};

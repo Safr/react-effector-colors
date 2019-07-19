@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -18,6 +17,7 @@ export const PaletteMetaForm = props => {
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
+      // eslint-disable-next-line react/prop-types
       palettes.every(
         ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase(),
       ),
@@ -84,4 +84,19 @@ export const PaletteMetaForm = props => {
       </Dialog>
     </>
   );
+};
+
+PaletteMetaForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  hideForm: PropTypes.func.isRequired,
+  palettes: PropTypes.shape({
+    paletteName: PropTypes.string.isRequired,
+    emoji: PropTypes.string.isRequired,
+    colors: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        color: PropTypes.string.isRequired,
+      }).isRequired,
+    ).isRequired,
+  }).isRequired,
 };

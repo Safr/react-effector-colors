@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { useStore } from 'effector-react';
 import { withStyles } from '@material-ui/styles';
 import { Page } from '@features/common/templates';
@@ -25,7 +26,6 @@ const PaletteView = props => {
   const changeFormat = val => {
     setFormat(val);
   };
-  console.log('palette', palette);
 
   const colorBoxes = palette
     ? palette.colors[level].map(color => {
@@ -58,6 +58,11 @@ const PaletteView = props => {
       </div>
     </Page>
   );
+};
+
+PaletteView.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
 };
 
 export const StyledPaletteView = withStyles(styles)(PaletteView);

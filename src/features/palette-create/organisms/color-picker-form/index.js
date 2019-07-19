@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
@@ -9,7 +9,7 @@ import styles from './styles';
 const ColorPickerForm = props => {
   const [currentColor, setCurrentColor] = useState('teal');
   const [newColorName, setColorName] = useState('');
-  const { paletteIsFull, classes, colors } = props;
+  const { addNewColor, paletteIsFull, classes, colors } = props;
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', value =>
@@ -33,7 +33,7 @@ const ColorPickerForm = props => {
       color: currentColor,
       name: newColorName,
     };
-    props.addNewColor(newColor);
+    addNewColor(newColor);
     setColorName('');
   };
 
@@ -75,6 +75,18 @@ const ColorPickerForm = props => {
       </ValidatorForm>
     </div>
   );
+};
+
+ColorPickerForm.propTypes = {
+  addNewColor: PropTypes.func.isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  paletteIsFull: PropTypes.bool.isRequired,
+  colors: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default withStyles(styles)(ColorPickerForm);

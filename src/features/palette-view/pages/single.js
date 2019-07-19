@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable guard-for-in */
-/* eslint-disable class-methods-use-this */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useStore } from 'effector-react';
 import { withStyles } from '@material-ui/styles';
@@ -22,9 +20,11 @@ const PaletteSingleView = props => {
       const allColors = newPalette.colors;
 
       for (const key in allColors) {
-        newShades = newShades.concat(
-          allColors[key].filter(color => color.id === colorToFilterBy),
-        );
+        if (allColors) {
+          newShades = newShades.concat(
+            allColors[key].filter(color => color.id === colorToFilterBy),
+          );
+        }
       }
       setShades(newShades.slice(1));
     };
@@ -61,6 +61,11 @@ const PaletteSingleView = props => {
       </div>
     </Page>
   );
+};
+
+PaletteSingleView.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  colorId: PropTypes.string.isRequired,
 };
 
 export const StyledPaletteSingleView = withStyles(styles)(PaletteSingleView);

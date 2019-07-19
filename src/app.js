@@ -4,7 +4,7 @@ import { PalettesListPage } from './features/palette-list';
 import { PaletteCreatePage } from './features/palette-create';
 import { PaletteViewPages } from './features/palette-view';
 
-const App = props => {
+const App = () => {
   return (
     <Route
       render={({ location }) => (

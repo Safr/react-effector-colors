@@ -1,10 +1,7 @@
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable no-loop-func */
 /* eslint-disable no-param-reassign */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { useStore } from 'effector-react';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -26,6 +23,8 @@ const PaletteCreate = props => {
   const [isOpen, setOpen] = useState(true);
   const [colors, setColors] = useState(seedColors[0].colors);
 
+  const { classes, history, maxColors } = props;
+
   const palettesList = useStore($palettesList);
 
   useEffect(() => {
@@ -44,12 +43,6 @@ const PaletteCreate = props => {
     setColors(prevColors => [...prevColors, newColor]);
   };
 
-  // const handleChange = (evt) => {
-  //   this.setState({
-  //     [evt.target.name]: evt.target.value,
-  //   });
-  // }
-
   const clearColors = () => {
     setColors([]);
   };
@@ -64,6 +57,7 @@ const PaletteCreate = props => {
       randomColor = allColors[rand];
       isDuplicateColor =
         colors &&
+        // eslint-disable-next-line no-loop-func
         colors.some(color => color && color.name === randomColor.name);
     }
 
@@ -73,9 +67,8 @@ const PaletteCreate = props => {
   const handleSubmit = newPalette => {
     newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
     newPalette.colors = colors;
-    // props.savePalette(newPalette);
     savePalette({ palette: newPalette });
-    props.history.push('/');
+    history.push('/');
   };
 
   const removeColor = colorName => {
@@ -88,7 +81,6 @@ const PaletteCreate = props => {
     setColors(arrayMove(colors, oldIndex, newIndex));
   };
 
-  const { classes, maxColors, palettes } = props;
   const paletteIsFull = colors.length >= maxColors;
 
   return (
@@ -96,7 +88,7 @@ const PaletteCreate = props => {
       <div className={classes.root}>
         <FormNav
           open={isOpen}
-          palettes={palettes}
+          palettes={palettesList}
           handleSubmit={handleSubmit}
           handleDrawerOpen={handleDrawerOpen}
         />
@@ -166,6 +158,12 @@ const PaletteCreate = props => {
 
 PaletteCreate.defaultProps = {
   maxColors: 20,
+};
+
+PaletteCreate.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  maxColors: PropTypes.number,
 };
 
 export const StyledPaletteCreate = withStyles(styles)(PaletteCreate);
