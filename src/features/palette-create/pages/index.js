@@ -20,7 +20,7 @@ import { ColorPickerForm, DraggableColorList, FormNav } from '../organisms';
 import styles from '../styles';
 
 const PaletteCreate = props => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
   const [colors, setColors] = useState(seedColors[0].colors);
 
   const { classes, history, maxColors } = props;

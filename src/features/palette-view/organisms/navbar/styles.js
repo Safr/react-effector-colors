@@ -8,6 +8,11 @@ export default {
     padding: '15px 0',
     backgroundColor: '#fff',
   },
+  level: {
+    [media.down('xs')]: {
+      marginLeft: '1rem',
+    },
+  },
   logo: {
     marginRight: '15px',
     padding: '0 13px',

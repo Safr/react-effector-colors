@@ -5,11 +5,16 @@ const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
     display: 'flex',
+    backgroundColor: '#fff',
   },
   drawer: {
+    position: 'fixed',
+    left: 0,
+    zIndex: 1,
     width: drawerWidth,
-    flexShrink: 0,
+
     height: '100vh',
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
@@ -26,7 +31,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    height: 'calc(100vh - 64px)',
+    height: 'calc(100vh - 68px)',
     padding: 0,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,

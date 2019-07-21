@@ -5,7 +5,7 @@ const styles = {
   },
   addColor: {
     width: '100%',
-    padding: '1rem',
+    padding: '0.4rem',
     marginTop: '1rem',
     fontSize: '2rem',
   },

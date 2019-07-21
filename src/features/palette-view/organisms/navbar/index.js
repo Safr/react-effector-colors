@@ -32,7 +32,7 @@ const Navbar = props => {
         <Link to="/">React Effector Colors</Link>
       </div>
       {showingAllColors && (
-        <div>
+        <div className={classes.level}>
           <span>Level: {level}</span>
           <div className={classes.slider}>
             <Slider

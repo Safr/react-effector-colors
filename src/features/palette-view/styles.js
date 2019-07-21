@@ -5,6 +5,7 @@ export default {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: '#fff',
   },
   colors: {
     height: '90%',

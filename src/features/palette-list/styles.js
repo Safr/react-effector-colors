@@ -18,6 +18,9 @@ export default {
   },
   heading: {
     fontSize: '2rem',
+    [media.down('xs')]: {
+      fontSize: '1.3rem',
+    },
   },
   container: {
     maxWidth: '1200px',
