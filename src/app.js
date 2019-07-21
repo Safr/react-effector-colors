@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ProtectedRoute } from '@features/common/organisms';
 import { PalettesListPage } from './features/palette-list';
 import { PaletteCreatePage } from './features/palette-create';
 import { PaletteViewPages } from './features/palette-view';
@@ -19,9 +20,14 @@ const App = () => {
             path="/"
             render={routeProps => <PalettesListPage {...routeProps} />}
           />
-          <Route
+          {/* <Route
             path="/palette/:paletteId"
             render={routeProps => <PaletteViewPages {...routeProps} />}
+          /> */}
+          <ProtectedRoute
+            path="/palette/:paletteId"
+            component={PaletteViewPages}
+            // render={routeProps => <PaletteViewPages {...routeProps} />}
           />
         </Switch>
       )}
