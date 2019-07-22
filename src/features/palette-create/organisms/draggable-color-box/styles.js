@@ -6,13 +6,16 @@ const styles = {
     width: '20%',
     height: '25%',
     margin: '0 auto',
+
+    alignItems: 'center',
     display: 'inline-block',
+    verticalAlign: 'middle',
     position: 'relative',
     cursor: 'pointer',
     marginBottom: '-3.5px',
     '&:hover svg': {
       color: 'white',
-      transform: 'scale(1.5)',
+      transform: 'scale(1.2)',
     },
     [media.down('lg')]: {
       width: '25%',
@@ -24,15 +27,16 @@ const styles = {
     },
     [media.down('sm')]: {
       width: '100%',
-      height: '5%',
     },
   },
   boxContent: {
-    position: 'absolute',
     width: '100%',
-    left: '0px',
-    bottom: '0px',
+    height: '100%',
+    alignItems: 'flex-end',
     padding: '10px',
+    [media.down('md')]: {
+      alignItems: 'center',
+    },
     color: props =>
       chroma(props.color).luminance() <= 0.08
         ? 'rgba(255,255,255,0.8)'
