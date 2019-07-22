@@ -5,6 +5,7 @@ const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
     display: 'flex',
+    height: '100%',
     backgroundColor: '#fff',
   },
   drawer: {
@@ -37,7 +38,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    // marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

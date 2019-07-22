@@ -5,7 +5,7 @@ export default {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    padding: '8px',
+    padding: '6px',
     fontWeight: 'bold',
     backgroundColor: 'white',
     [media.down('xs')]: {
